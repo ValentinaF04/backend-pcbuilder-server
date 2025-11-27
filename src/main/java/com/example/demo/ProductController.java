@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/products")
+@RequestMapping("/api/v1")
 @CrossOrigin(origins = "*") // Importante para evitar bloqueos
 public class ProductController {
 
