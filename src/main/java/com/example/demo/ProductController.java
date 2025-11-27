@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/products")
 @CrossOrigin(origins = "*") // Importante para evitar bloqueos
 public class ProductController {
 
@@ -19,9 +19,9 @@ public class ProductController {
     @PostConstruct
     public void init() {
         if(productRepository.count() == 0) {
-            productRepository.save(new Product("PC Gamer Ultra", "Intel i9, RTX 4090", 2500000.0, 5, "https://example.com/pc.jpg"));
-            productRepository.save(new Product("Teclado Mecánico", "RGB Cherry MX", 80000.0, 20, "https://example.com/kb.jpg"));
-            productRepository.save(new Product("Mouse Pro", "20000 DPI", 45000.0, 15, "https://example.com/mouse.jpg"));
+            productRepository.save(new Product("PC Gamer Ultra", "Intel i9, RTX 4090", 2500000.0, 5, "https://cdnx.jumpseller.com/compuelite/image/64431640/thumb/610/610?1749678037"));
+            productRepository.save(new Product("Teclado Mecánico", "RGB Cherry MX", 80000.0, 20, "https://images-na.ssl-images-amazon.com/images/I/61meQuPPc-L.jpg"));
+            productRepository.save(new Product("Mouse Pro", "20000 DPI", 45000.0, 15, "https://www.ebest.cl/media/catalog/product/cache/47abc4af9d81a631bd44d97ba9797770/p/r/pro-gaming-mouse-_1_.jpg"));
         }
     }
 
@@ -29,6 +29,11 @@ public class ProductController {
     @GetMapping("/products")
     public List<Product> getAllProducts() {
         return productRepository.findAll();
+    }
+
+    @PostMapping
+    public Product createProduct(@RequestBody Product product) {
+        return productRepository.save(product);
     }
 
     // --- ENDPOINT 2: LOGIN FALSO (Para cumplir rúbrica) ---
