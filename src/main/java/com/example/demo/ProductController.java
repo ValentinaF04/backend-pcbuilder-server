@@ -17,11 +17,27 @@ public class ProductController {
 
     // --- CARGA DE DATOS INICIAL (SEEDER) ---
     @PostConstruct
+    @jakarta.annotation.PostConstruct
     public void init() {
         if(productRepository.count() == 0) {
-            productRepository.save(new Product("PC Gamer Ultra", "Intel i9, RTX 4090", 2500000.0, 5, "https://cdnx.jumpseller.com/compuelite/image/64431640/thumb/610/610?1749678037"));
-            productRepository.save(new Product("Teclado Mecánico", "RGB Cherry MX", 80000.0, 20, "https://images-na.ssl-images-amazon.com/images/I/61meQuPPc-L.jpg"));
-            productRepository.save(new Product("Mouse Pro", "20000 DPI", 45000.0, 15, "https://www.ebest.cl/media/catalog/product/cache/47abc4af9d81a631bd44d97ba9797770/p/r/pro-gaming-mouse-_1_.jpg"));
+            // --- PROCESADORES ---
+            productRepository.save(new Product("Intel Core i9-13900K", "24 Núcleos, 5.8GHz Turbo", 650000.0, 10, "https://www.gsmpro.cl/cdn/shop/files/procesador-intel-core-i9-13900k.png?v=1747340824"));
+            productRepository.save(new Product("AMD Ryzen 9 7950X", "16 Núcleos, Arquitectura Zen 4", 590000.0, 8, "https://www.gsmpro.cl/cdn/shop/files/procesador-amd-ryzen-9-7950x3d.png?v=1747340816"));
+
+            // --- TARJETAS GRÁFICAS ---
+            productRepository.save(new Product("NVIDIA RTX 4090", "24GB VRAM GDDR6X, ASUS ROG", 2100000.0, 3, "https://www.winpy.cl/files/36915-3331-ASUS-ROG-Strix-GeForce-RTX-4090-24G-1.jpg"));
+            productRepository.save(new Product("AMD Radeon RX 7900 XTX", "24GB VRAM, Sapphire Nitro+", 1200000.0, 5, "https://www.winpy.cl/files/40276-1210-Tarjeta-de-Video-Gigabyte-Gaming-RX-7900-XTX-OC-de-24GB-GDDR6-1.jpg"));
+            productRepository.save(new Product("NVIDIA RTX 3060", "12GB VRAM, MSI Ventus", 350000.0, 15, "https://asset.msi.com/resize/image/global/product/product_1610443907b48feb29b4a49834f4b19e35c5511db6.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png"));
+
+            // --- RAM Y ALMACENAMIENTO ---
+            productRepository.save(new Product("RAM Corsair 32GB", "DDR5 5600MHz (2x16GB)", 140000.0, 20, "https://www.winpy.cl/files/37195-9295-Corsair-Vengeance-RGB-2.jpg"));
+            productRepository.save(new Product("SSD Samsung 990 PRO 2TB", "NVMe M.2 Gen4, 7450 MB/s", 180000.0, 25, "https://images-na.ssl-images-amazon.com/images/I/71OWtcxKgvL.jpg"));
+
+            // --- PERIFÉRICOS ---
+            productRepository.save(new Product("Teclado Redragon Kumara", "RGB, Switches Azules, Español", 45000.0, 30, "https://etchile.net/wp-content/uploads/2023/03/redragon_KUMARA_K552-KR_SP_09.jpg"));
+
+            // --- OTROS ---
+            productRepository.save(new Product("Monitor LG UltraGear 27''", "144Hz, IPS, 1ms, G-Sync", 280000.0, 12, "https://media.spdigital.cl/thumbnails/products/d1d99qom_a9faaaa6_thumbnail_4096.jpg"));
         }
     }
 
