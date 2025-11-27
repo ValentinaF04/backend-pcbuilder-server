@@ -3,7 +3,7 @@ package com.example.demo;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct; // Import necesario
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +17,8 @@ public class ProductController {
 
     // --- CARGA DE DATOS INICIAL (SEEDER) ---
     @PostConstruct
-    @jakarta.annotation.PostConstruct
     public void init() {
+        // Solo carga si la base de datos está vacía
         if(productRepository.count() == 0) {
             // --- PROCESADORES ---
             productRepository.save(new Product("Intel Core i9-13900K", "24 Núcleos, 5.8GHz Turbo", 650000.0, 10, "https://www.gsmpro.cl/cdn/shop/files/procesador-intel-core-i9-13900k.png?v=1747340824"));
@@ -47,20 +47,19 @@ public class ProductController {
         return productRepository.findAll();
     }
 
+    // --- ENDPOINT 2: GUARDAR PRODUCTOS ---
     @PostMapping("/products")
     public Product createProduct(@RequestBody Product product) {
         return productRepository.save(product);
     }
 
-    // --- ENDPOINT 2: LOGIN FALSO (Para cumplir rúbrica) ---
+    // --- ENDPOINT 3: LOGIN FALSO ---
     @PostMapping("/auth/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> creds) {
         String email = creds.get("email");
         String password = creds.get("password");
 
-        // Validación simple "hardcoded"
         if ("user@gmail.com".equals(email) && "user1234".equals(password)) {
-            // Retornamos un JSON que simula ser el usuario
             return ResponseEntity.ok(Map.of(
                     "uid", 1,
                     "name", "Usuario Backend",
@@ -70,4 +69,4 @@ public class ProductController {
         }
         return ResponseEntity.status(401).body("Credenciales incorrectas");
     }
-}
+}git
