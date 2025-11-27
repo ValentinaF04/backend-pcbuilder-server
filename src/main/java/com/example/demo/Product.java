@@ -1,4 +1,4 @@
-package com.example.demo.model; // Asegúrate que tu paquete sea el correcto (com.example.pcbuilder.model o similar)
+package com.example.demo; // Asegúrate que tu paquete sea el correcto (com.example.pcbuilder.model o similar)
 
 import jakarta.persistence.*;
 
